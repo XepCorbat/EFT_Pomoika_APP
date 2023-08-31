@@ -24,9 +24,15 @@ def run_query(aue=None):
         for i in response.json()['data']['items']:
             subject_values+=f'\n{i["name"]}:\n Средняя цена на барахолке -> {i["avg24hPrice"]}\n'
             for j in i["sellFor"]:
+<<<<<<< Updated upstream
                 subject_values+=f" {j['vendor']['name']} -> {j['price']} \n"
             subject_values+="--------------------"
         label['text'] = subject_values
+=======
+                kot+=f"   цена: {j['price']} vender:{j['vendor']['name']}\n"
+            kot+="________________"
+        label['text']=kot
+>>>>>>> Stashed changes
     else:
         raise Exception("Query failed to run by returning code of {}. {}".format(response.status_code, query))
 
