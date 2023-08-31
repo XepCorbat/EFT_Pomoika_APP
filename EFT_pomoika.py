@@ -1,5 +1,5 @@
 import requests
-
+itemName=input()
 def run_query(query):
     headers = {"Content-Type": "application/json"}
     response = requests.post('https://api.tarkov.dev/graphql', headers=headers, json={'query': query})
@@ -8,11 +8,9 @@ def run_query(query):
     else:
         raise Exception("Query failed to run by returning code of {}. {}".format(response.status_code, query))
 
-
-new_query = """
+new_query = '''
 {
-   
-  itemsByName(name: "AK-12 5.45x39 sound suppressor") {
+  itemsByName(name: "'''+itemName+'''") {
     avg24hPrice
     sellFor {
       price,
@@ -20,7 +18,6 @@ new_query = """
     }
   }
 }
-"""
-
+'''
 result = run_query(new_query)
 print(result)
