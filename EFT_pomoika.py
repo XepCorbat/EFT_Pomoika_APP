@@ -1,5 +1,5 @@
 import requests
-from tkinter import*
+from tkinter import *
 from tkinter import ttk
 
 
@@ -22,29 +22,23 @@ def run_query(aue=None):
         subject_values = "o predmete\n"
         print(response.json())
         for i in response.json()['data']['items']:
-            subject_values+=f'\n{i["name"]}:\n Средняя цена на барахолке -> {i["avg24hPrice"]}\n'
+            subject_values += f'\n{i["name"]}:\n Средняя цена на барахолке -> {i["avg24hPrice"]}\n'
             for j in i["sellFor"]:
-<<<<<<< Updated upstream
-                subject_values+=f" {j['vendor']['name']} -> {j['price']} \n"
-            subject_values+="--------------------"
+                subject_values += f" {j['vendor']['name']} -> {j['price']} \n"
+            subject_values += "--------------------"
         label['text'] = subject_values
-=======
-                kot+=f"   цена: {j['price']} vender:{j['vendor']['name']}\n"
-            kot+="________________"
-        label['text']=kot
->>>>>>> Stashed changes
     else:
         raise Exception("Query failed to run by returning code of {}. {}".format(response.status_code, query))
 
- 
-root=Tk()
+
+root = Tk()
 root.title('Romapidor')
 root.geometry('300x600')
 entry = ttk.Entry()
 entry.pack(anchor=NW, padx=6, pady=6)
 btn = ttk.Button(text="iwiMraz'", command=run_query)
 btn.pack(anchor=NW, padx=6, pady=6)
-entry.bind('<Return>',run_query)
+entry.bind('<Return>', run_query)
 label = ttk.Label()
 label.pack(anchor=NW, padx=6, pady=6)
 
