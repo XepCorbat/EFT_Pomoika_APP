@@ -36,7 +36,7 @@ def run_query(aue=None):
     else:
         raise Exception("Query failed to run by returning code of {}. {}".format(response.status_code, query))
 
-
+ 
 root=Tk()
 root.title('Romapidor')
 root.geometry('300x600')
